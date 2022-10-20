@@ -65,21 +65,40 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        InkWell(
-          onTap: () {
-            AudioPlayer().play(AssetSource('assets/audio/kick.wav'));
-          },
-          child: Container(
-              height: 100,
-              width: 100,
-              decoration: BoxDecoration(
-                color: Colors.red,
+      body: SafeArea(
+          child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                onTap: () {
+                  AudioPlayer().play(AssetSource('audio/kick.mp3'));
+                },
+                child: Container(
+                    height: 100,
+                    width: 100,
+                    decoration: const BoxDecoration(
+                      color: Colors.red,
+                    ),
+                    child: const Center(child: Text('Kick'))),
               ),
-              child: const Text('Kick')),
-        ),
-      ],
-    ));
+              InkWell(
+                onTap: () {
+                  AudioPlayer().play(AssetSource('audio/snare.mp3'));
+                },
+                child: Container(
+                    height: 100,
+                    width: 100,
+                    decoration: const BoxDecoration(
+                      color: Colors.green,
+                    ),
+                    child: const Center(child: Text('Snare'))),
+              ),
+            ],
+          ),
+        ],
+      )),
+    );
   }
 }
